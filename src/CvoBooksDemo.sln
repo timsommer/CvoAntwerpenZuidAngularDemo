@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CvoBooksDemo", "CvoBooksDemo\CvoBooksDemo.csproj", "{74D8B90B-C4E4-48A3-8318-155D19F547CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CvoBooksDemo.Repository", "CvoBooksDemo.Repository\CvoBooksDemo.Repository.csproj", "{5BF2AA94-24FB-4A9F-A187-8D2D90EECE47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CvoBooksDemo.Domain", "CvoBooksDemo.Domain\CvoBooksDemo.Domain.csproj", "{73218A75-EA0F-42F8-91D3-7F6B4F6D62FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74D8B90B-C4E4-48A3-8318-155D19F547CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74D8B90B-C4E4-48A3-8318-155D19F547CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74D8B90B-C4E4-48A3-8318-155D19F547CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74D8B90B-C4E4-48A3-8318-155D19F547CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BF2AA94-24FB-4A9F-A187-8D2D90EECE47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BF2AA94-24FB-4A9F-A187-8D2D90EECE47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BF2AA94-24FB-4A9F-A187-8D2D90EECE47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BF2AA94-24FB-4A9F-A187-8D2D90EECE47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73218A75-EA0F-42F8-91D3-7F6B4F6D62FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73218A75-EA0F-42F8-91D3-7F6B4F6D62FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73218A75-EA0F-42F8-91D3-7F6B4F6D62FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73218A75-EA0F-42F8-91D3-7F6B4F6D62FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
