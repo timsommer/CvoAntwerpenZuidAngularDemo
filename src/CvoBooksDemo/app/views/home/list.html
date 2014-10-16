@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="starter-template">
+        <h1>Book list</h1>
+        <pre>Page: {{FilterCriteria.Page}} / {{numPages}}</pre>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th ng-repeat="header in Headers">
+                            <sort-by reverse="FilterCriteria.orderReverse" order="FilterCriteria.orderBy" value="{{ header.Value }}">{{ header.Title }}</sort-by>
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#</td>
+                        <td>
+                            <input ng-change="FetchResult()" ng-model="FilterCriteria.firstname" type="text" class="form-control" />
+                        </td>
+                        <td>
+                            <input ng-change="FetchResult()" ng-model="FilterCriteria.lastname" ng-model-options="{ updateOn: 'blur' }" type="text" class="form-control" />
+                        </td>
+                        <td>
+                            <input ng-change="FetchResult()" ng-model="FilterCriteria.email" type="text" class="form-control" />
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    <tr ng-repeat="customer in Customers | orderBy : FilterCriteria.orderBy : FilterCriteria.orderReverse | filter:{firstname:FilterCriteria.firstname, lastname:FilterCriteria.lastname, email:FilterCriteria.email, credits:FilterCriteria.credits}">
+                        <td><a ng-click="open(person)">{{customer.id}}</a></td>
+                        <td>{{customer.firstname}}</td>
+                        <td>{{customer.lastname}}</td>
+                        <td>{{customer.email}}</td>
+                        <td>
+                            <button class="btn btn-default btn-xs" ng-click="edit(customer)"><i class="glyphicon glyphicon-pencil"></i></button>
+                            <button class="btn btn-default btn-xs" ng-click="console.log(customer)"><i class="glyphicon glyphicon-remove"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ng-if="TotalItems == 0">
+                <h3>No customers found...</h3>
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col-xs-12 col-md-10">
+                <pagination boundary-links="true" ng-show="Customers.length > FilterCriteria.PageSize"
+                    max-size="15" rotate="false" total-items="Customers.length" num-pages="numPages"
+                    previous-text=" &lsaquo;" next-text="&rsaquo;" items-per-page="FilterCriteria.PageSize"
+                    first-text="&laquo;" last-text="&raquo;"
+                    total-items="totalItems" ng-model="FilterCriteria.Page" ng-change="FetchResult()">
+                </pagination>
+            </div>
+
+            <div class="col-xs-12 col-md-2">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-list"></i>
+                    </span>
+                    <select ng-model="FilterCriteria.PageSize" class="form-control" ng-change="FetchResult()"
+                        ng-options="t for t in [10, 25, 50, 75, 100]">
+                        <option>--</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <button type="button" class="btn btn-primary" ng-click="create()" >Create customer</button>
+    </div>
+</div>

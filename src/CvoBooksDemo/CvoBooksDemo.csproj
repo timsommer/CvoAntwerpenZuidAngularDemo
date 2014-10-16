@@ -124,7 +124,30 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="app\app.js" />
+    <Content Include="app\config.exceptionHandles.js" />
+    <Content Include="app\config.js" />
+    <Content Include="app\controllers\CustomerController.js" />
+    <Content Include="app\controllers\HomeController.js" />
+    <Content Include="app\controllers\Team4TalentController.js" />
+    <Content Include="app\directives\detectActiveTab.js" />
+    <Content Include="app\directives\hasError.js" />
+    <Content Include="app\directives\sortBy.js" />
+    <Content Include="app\services\CustomerService.js" />
+    <Content Include="app\views\error-messages.html" />
+    <Content Include="app\views\home\list.html" />
+    <Content Include="app\views\home\_customer.html" />
+    <Content Include="app\views\team4talent.html" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\style.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="index.html" />
+    <Content Include="lib\angular-animate.js" />
+    <Content Include="lib\angular-messages.js" />
+    <Content Include="lib\angular-route.js" />
+    <Content Include="lib\angular.js" />
+    <Content Include="lib\ui-bootstrap-tpls-0.11.2.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -135,7 +158,9 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\filters\" />
     <Folder Include="App_Data\" />
+    <Folder Include="img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -149,6 +174,11 @@
       <Project>{5bf2aa94-24fb-4a9f-a187-8d2d90eece47}</Project>
       <Name>CvoBooksDemo.Repository</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

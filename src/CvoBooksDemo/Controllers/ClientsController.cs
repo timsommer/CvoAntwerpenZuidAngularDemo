@@ -17,14 +17,14 @@ namespace CvoBooksDemo.Controllers
         {
             try
             {
-             
-                    var clients = new List<Client>()
+
+                var clients = new List<Client>()
                         {
                             new Client(){Id=1, Name="tim is een held", Address = "123456"}
                         };
 
-                    return Request.CreateResponse(HttpStatusCode.OK, new GetClientsRequestMessage { Clients = clients });
-                
+                return Request.CreateResponse(HttpStatusCode.OK, new GetClientsRequestMessage { Clients = clients });
+
 
             }
             catch (Exception e)
@@ -39,10 +39,10 @@ namespace CvoBooksDemo.Controllers
         {
             try
             {
-               
-                    return Request.CreateResponse(HttpStatusCode.OK,
-                                                  new SaveClientMessage { Client = new Client() { Name = "tim", Id = id } });
-               
+
+                return Request.CreateResponse(HttpStatusCode.OK,
+                                              new SaveClientMessage { Client = new Client() { Name = "tim", Id = id } });
+
 
             }
             catch (Exception e)
