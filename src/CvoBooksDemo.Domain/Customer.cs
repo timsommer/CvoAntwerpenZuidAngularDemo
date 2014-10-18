@@ -2,7 +2,7 @@
 
 namespace CvoBooksDemo.Domain
 {
-    public class Client : DomainObject
+    public class Customer : DomainObject
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }        

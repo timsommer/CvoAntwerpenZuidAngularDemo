@@ -4,22 +4,22 @@ using CvoBooksDemo.Repository.Context.Mapping;
 
 namespace CvoBooksDemo.Repository.Context
 {
-    public class CvoBooksContext : DbContext, ICvoBooksContext
+    public class CvoCustomerContext : DbContext, ICvoCustomerContext
     {
-        public CvoBooksContext()
+        public CvoCustomerContext()
         {
-            Database.SetInitializer<CvoBooksContext>(null);
+            Database.SetInitializer<CvoCustomerContext>(null);
             // We're using eager loading in this application.
             Configuration.LazyLoadingEnabled = false;
             Configuration.AutoDetectChangesEnabled = true;
 
         }
 
-        public DbSet<Client> Client { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new ClientMapping());
+            modelBuilder.Configurations.Add(new CustomerMapping());
         }
 
     }

@@ -4,13 +4,13 @@ using CvoBooksDemo.Domain;
 namespace CvoBooksDemo.Dto
 {
 
-    public class GetClientsRequestMessage
+    public class GetCustomerRequestMessage
     {
-        public List<Client> Clients { get; set; }
+        public List<Customer> Customers { get; set; }
     }
 
-    public class SaveClientMessage
+    public class SaveCustomerMessage
     {
-        public Client Client { get; set; }
+        public Customer Customer { get; set; }
     }
 }

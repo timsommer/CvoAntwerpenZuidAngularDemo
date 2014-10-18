@@ -46,12 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\CvoBooksContext.cs" />
-    <Compile Include="Context\ICvoBooksContext.cs" />
-    <Compile Include="Context\Mapping\ClientMapping.cs" />
+    <Compile Include="Context\CvoCustomerContext.cs" />
+    <Compile Include="Context\ICvoCustomerContext.cs" />
+    <Compile Include="Context\Mapping\CustomerMapping.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\ClientRepository.cs" />
+    <Compile Include="Repository\CustomerRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

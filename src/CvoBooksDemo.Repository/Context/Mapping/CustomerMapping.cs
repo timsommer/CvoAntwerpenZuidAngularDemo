@@ -3,11 +3,11 @@ using CvoBooksDemo.Domain;
 
 namespace CvoBooksDemo.Repository.Context.Mapping
 {
-    public class ClientMapping : EntityTypeConfiguration<Client>
+    public class CustomerMapping : EntityTypeConfiguration<Customer>
     {
-        public ClientMapping()
+        public CustomerMapping()
         {
-            ToTable("Client");
+            ToTable("Customer");
 
             HasKey(c => c.Id);
         }

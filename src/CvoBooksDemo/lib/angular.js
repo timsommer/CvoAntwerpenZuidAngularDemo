@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @license AngularJS v1.3.0
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
@@ -8953,7 +8953,7 @@ function $HttpProvider() {
      * - [JSON vulnerability](http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx)
      * - [XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
      *
-     * Both server and the client must cooperate in order to eliminate these threats. Angular comes
+     * Both server and the Customer must cooperate in order to eliminate these threats. Angular comes
      * pre-configured with strategies that address these issues, but for this to work backend server
      * cooperation is required.
      *
@@ -9648,7 +9648,7 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
           // browsers implementing the responseType
           //
           // The json response type can be ignored if not supported, because JSON payloads are
-          // parsed on the client-side regardless.
+          // parsed on the Customer-side regardless.
           if (responseType !== 'json') {
             throw e;
           }
@@ -15020,7 +15020,7 @@ function $SceDelegateProvider() {
  * bindings.  (HTML is just one example of a context where rendering user controlled input creates
  * security vulnerabilities.)
  *
- * For the case of HTML, you might use a library, either on the client side, or on the server side,
+ * For the case of HTML, you might use a library, either on the Customer side, or on the server side,
  * to sanitize unsafe HTML before binding to the value and rendering it in the document.
  *
  * How would you ensure that every place that used these types of bindings was bound to a value that
@@ -18154,7 +18154,7 @@ function FormController(element, attrs, $scope, $animate, $interpolate) {
  *
  * # Submitting a form and preventing the default action
  *
- * Since the role of forms in client-side Angular applications is different than in classical
+ * Since the role of forms in Customer-side Angular applications is different than in classical
  * roundtrip apps, it is desirable for the browser not to translate the form submission into a full
  * page reload that sends the data to the server. Instead some javascript logic should be triggered
  * to handle the form submission in an application-specific way.

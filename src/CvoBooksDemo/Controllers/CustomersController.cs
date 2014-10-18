@@ -11,21 +11,21 @@ using CvoBooksDemo.Repository.Repository;
 
 namespace CvoBooksDemo.Controllers
 {
-    public class ClientsController : ApiController
+    public class CustomersController : ApiController
     {
         // Private fields
-        private readonly IClientRepository _ClientRepository;
+        private readonly ICustomerRepository _CustomerRepository;
 
 
 
         // Class Initializers
-        public ClientsController(IClientRepository clientRepository)
+        public CustomersController(ICustomerRepository customerRepository)
         {
-            _ClientRepository = clientRepository;
+            _CustomerRepository = customerRepository;
         }
 
 
-        public ClientsController() : this(new ClientRepository())
+        public CustomersController() : this(new CustomerRepository())
         {
             
         }
@@ -33,14 +33,14 @@ namespace CvoBooksDemo.Controllers
 
 
         // Public API methods
-        // GET api/clients
+        // GET api/customers
         public HttpResponseMessage Get()
         {
             try
             {
-                var clients = _ClientRepository.Get().ToList();
+                var customers = _CustomerRepository.Get().ToList();
 
-                return Request.CreateResponse(HttpStatusCode.OK, new GetClientsRequestMessage { Clients = clients });
+                return Request.CreateResponse(HttpStatusCode.OK, new GetCustomerRequestMessage { Customers = customers });
 
 
             }
@@ -51,14 +51,14 @@ namespace CvoBooksDemo.Controllers
         }
 
 
-        // GET api/clients/5
+        // GET api/customers/5
         public HttpResponseMessage Get([FromUri]int id)
         {
             try
             {
-                var client = _ClientRepository.Get(id);
+                var customer = _CustomerRepository.Get(id);
 
-                return Request.CreateResponse(HttpStatusCode.OK, new SaveClientMessage { Client = client });
+                return Request.CreateResponse(HttpStatusCode.OK, new SaveCustomerMessage { Customer = customer });
             }
             catch (Exception e)
             {
@@ -67,12 +67,12 @@ namespace CvoBooksDemo.Controllers
         }
 
 
-        // POST api/clients
-        public HttpResponseMessage Post(SaveClientMessage message)
+        // POST api/customers
+        public HttpResponseMessage Post(SaveCustomerMessage message)
         {
             try
             {
-                _ClientRepository.Save(message.Client);
+                _CustomerRepository.Save(message.Customer);
 
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -83,12 +83,12 @@ namespace CvoBooksDemo.Controllers
         }
 
 
-        // PUT api/clients/5
-        public HttpResponseMessage Put(int id, SaveClientMessage message)
+        // PUT api/customers/5
+        public HttpResponseMessage Put(int id, SaveCustomerMessage message)
         {
             try
             {
-                _ClientRepository.Save(message.Client);
+                _CustomerRepository.Save(message.Customer);
 
                 //update message
                 return Request.CreateResponse(HttpStatusCode.OK);
@@ -100,13 +100,11 @@ namespace CvoBooksDemo.Controllers
         }
 
 
-        // DELETE api/clients/5
+        // DELETE api/customers/5
         public HttpResponseMessage Delete(int id)
         {
             try
             {
-
-                //delete message
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception e)

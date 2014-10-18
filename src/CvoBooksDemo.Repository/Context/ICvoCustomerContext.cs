@@ -4,11 +4,11 @@ using CvoBooksDemo.Domain;
 
 namespace CvoBooksDemo.Repository.Context
 {
-    public interface ICvoBooksContext
+    public interface ICvoCustomerContext
     {
         Database Database { get; }
 
-        DbSet<Client> Client { get; set; }
+        DbSet<Customer> Customers { get; set; }
 
 
 

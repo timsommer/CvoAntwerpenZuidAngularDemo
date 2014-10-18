@@ -5,14 +5,14 @@ namespace CvoBooksDemo.Repository.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<CvoBooksDemo.Repository.Context.CvoBooksContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<CvoBooksDemo.Repository.Context.CvoCustomerContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(CvoBooksDemo.Repository.Context.CvoBooksContext context)
+        protected override void Seed(CvoBooksDemo.Repository.Context.CvoCustomerContext context)
         {
             //  This method will be called after migrating to the latest version.
 
