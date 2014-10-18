@@ -24,7 +24,7 @@
     .constant("config", {
         //Just in case...
     })
-    .run(['$location', '$rootScope', function($location, $rootScope) {
+    .run(['$location', '$rootScope', function($location, $rootScope, $scope) {
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
             $rootScope.title = current.$$route ? current.$$route.title : '';
         });

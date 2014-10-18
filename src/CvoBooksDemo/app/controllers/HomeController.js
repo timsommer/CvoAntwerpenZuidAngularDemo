@@ -7,9 +7,10 @@
                 //Fields
                 $scope.Headers = [
                     { Title: "Id", Value: "id" },
-                    { Title: "First Name", Value: "firstname" },
-                    { Title: "Last Name", Value: "lastname" },
-                    { Title: "E-mail", Value: "email" }
+                    { Title: "First Name", Value: "firstName" },
+                    { Title: "Last Name", Value: "lastName" },
+                    { Title: "E-mail", Value: "emailAdress" },
+                    { Title: "Phone Number", Value: "phoneNumber" }
                 ];
 
                 $scope.FilterCriteria = {
@@ -18,11 +19,14 @@
                     orderBy: 'firstName',
                 };
 
+            $scope.sliceIndex = 5;
 
                 $scope.FetchResult = function () {
-                    $scope.data = CustomerService.get($scope.FilterCriteria, function (message) {
-                        $scope.TotalItems = message.customers.length;
+                    CustomerService.get($scope.FilterCriteria, function (message) {
+                        $scope.data = message;
+                        $scope.data.customers = message.customers.slice(0, $scope.sliceIndex);
                     });
+                   
                 };
                 
 
@@ -68,6 +72,15 @@
                         };
                     }
                 };
+
+                $scope.loadMore = function () {
+                    $scope.sliceIndex += 5;
+                    $scope.$broadcast("CvoDemo:HomeController:autoload");
+                }
+
+                $scope.$on('CvoDemo:HomeController:autoload', function (event, mass) {
+                    $scope.FetchResult();
+                });
 
                 $scope.FetchResult();
             }
