@@ -9,5 +9,7 @@ namespace CvoBooksDemo.Domain.Repositories
         IEnumerable<Client> Get();
 
         void Save(Client client);
+
+        void Delete(int id);
     }
 }

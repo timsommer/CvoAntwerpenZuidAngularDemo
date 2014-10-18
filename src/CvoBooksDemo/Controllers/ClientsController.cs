@@ -5,23 +5,40 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using CvoBooksDemo.Domain;
+using CvoBooksDemo.Domain.Repositories;
 using CvoBooksDemo.Dto;
+using CvoBooksDemo.Repository.Repository;
 
 namespace CvoBooksDemo.Controllers
 {
     public class ClientsController : ApiController
     {
+        // Private fields
+        private readonly IClientRepository _ClientRepository;
 
+
+
+        // Class Initializers
+        public ClientsController(IClientRepository clientRepository)
+        {
+            _ClientRepository = clientRepository;
+        }
+
+
+        public ClientsController() : this(new ClientRepository())
+        {
+            
+        }
+
+
+
+        // Public API methods
         // GET api/clients
         public HttpResponseMessage Get()
         {
             try
             {
-
-                var clients = new List<Client>()
-                        {
-                            new Client(){Id=1, Name="tim is een held", Address = "123456"}
-                        };
+                var clients = _ClientRepository.Get().ToList();
 
                 return Request.CreateResponse(HttpStatusCode.OK, new GetClientsRequestMessage { Clients = clients });
 
@@ -39,11 +56,9 @@ namespace CvoBooksDemo.Controllers
         {
             try
             {
+                var client = _ClientRepository.Get(id);
 
-                return Request.CreateResponse(HttpStatusCode.OK,
-                                              new SaveClientMessage { Client = new Client() { Name = "tim", Id = id } });
-
-
+                return Request.CreateResponse(HttpStatusCode.OK, new SaveClientMessage { Client = client });
             }
             catch (Exception e)
             {
@@ -53,11 +68,12 @@ namespace CvoBooksDemo.Controllers
 
 
         // POST api/clients
-        public HttpResponseMessage Post(SaveClientMessage client)
+        public HttpResponseMessage Post(SaveClientMessage message)
         {
             try
             {
-                //create new client
+                _ClientRepository.Save(message.Client);
+
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception e)
@@ -68,11 +84,13 @@ namespace CvoBooksDemo.Controllers
 
 
         // PUT api/clients/5
-        public HttpResponseMessage Put(int id, SaveClientMessage client)
+        public HttpResponseMessage Put(int id, SaveClientMessage message)
         {
             try
             {
-                //update client
+                _ClientRepository.Save(message.Client);
+
+                //update message
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception e)
@@ -87,7 +105,8 @@ namespace CvoBooksDemo.Controllers
         {
             try
             {
-                //delete client
+
+                //delete message
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception e)

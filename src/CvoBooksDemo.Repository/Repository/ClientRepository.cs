@@ -25,15 +25,20 @@ namespace CvoBooksDemo.Repository.Repository
             _cvoBooksContext = cvoBooksContext;
         }
 
+
+
+        // Public methods
         public Client Get(int id)
         {
             return _cvoBooksContext.Client.Single(c => c.Id == id);
         }
 
+
         public IEnumerable<Client> Get()
         {
             return _cvoBooksContext.Client.ToList();
         }
+
 
         public void Save(Client client)
         {
@@ -47,6 +52,14 @@ namespace CvoBooksDemo.Repository.Repository
                 _cvoBooksContext.Client.Attach(client);
                 _cvoBooksContext.SaveChanges();
             }
+        }
+
+
+        public void Delete(int id)
+        {
+            var client = _cvoBooksContext.Client.Single(c => c.Id == id);
+            _cvoBooksContext.Client.Remove(client);
+            _cvoBooksContext.SaveChanges();
         }
     }
 }
