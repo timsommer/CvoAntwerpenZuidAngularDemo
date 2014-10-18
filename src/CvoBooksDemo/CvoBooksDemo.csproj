@@ -145,6 +145,7 @@
     <Content Include="index.html" />
     <Content Include="lib\angular-animate.js" />
     <Content Include="lib\angular-messages.js" />
+    <Content Include="lib\angular-resource.js" />
     <Content Include="lib\angular-route.js" />
     <Content Include="lib\angular.js" />
     <Content Include="lib\ui-bootstrap-tpls-0.11.2.js" />

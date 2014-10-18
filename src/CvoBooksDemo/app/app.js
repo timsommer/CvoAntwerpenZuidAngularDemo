@@ -10,7 +10,7 @@
         "CvoDemo.controllers", "CvoDemo.services", "CvoDemo.directives", "ngMessages"
     ]);
     angular.module("CvoDemo.controllers", ["ngRoute", "ui.bootstrap"]);
-    angular.module("CvoDemo.services", []);
+    angular.module("CvoDemo.services", ["ngResource"]);
     angular.module("CvoDemo.filter", []);
 	angular.module("CvoDemo.directives", ["jb.directives"]);
 }());

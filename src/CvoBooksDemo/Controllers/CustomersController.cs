@@ -56,7 +56,16 @@ namespace CvoBooksDemo.Controllers
         {
             try
             {
-                var customer = _CustomerRepository.Get(id);
+                Customer customer;
+
+                if (id == 0)
+                {
+                    customer = new Customer() {Id = 0};
+                }
+                else
+                {
+                    customer = _CustomerRepository.Get(id);
+                }
 
                 return Request.CreateResponse(HttpStatusCode.OK, new SaveCustomerMessage { Customer = customer });
             }

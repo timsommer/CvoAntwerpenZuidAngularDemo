@@ -15,18 +15,16 @@
                 $scope.FilterCriteria = {
                     PageSize: 10,
                     Page: 1,
-                    orderBy: 'firstname',
+                    orderBy: 'firstName',
                 };
 
+
                 $scope.FetchResult = function () {
-                    return CustomerService.Get($scope.FilterCriteria).then(function(data) {
-                        $scope.Customers = data.Records;
-                        $scope.TotalItems = data.TotalItems;
-                    }, function() {
-                        $scope.Customers = [];
-                        $scope.TotalItems = 0;
+                    $scope.data = CustomerService.get($scope.FilterCriteria, function (message) {
+                        $scope.TotalItems = message.customers.length;
                     });
                 };
+                
 
                 $scope.edit = function(customer) {
                     var modalInstance = $modal.open({
@@ -50,9 +48,7 @@
                         templateUrl: 'app/views/home/_customer.html',
                         controller: 'CustomerController',
                         resolve: {
-                            customerCopy: function() {
-                                return {};
-                            }
+                            customerCopy: {}
                         }
                     });
                     modalInstance.result.then(function () {
