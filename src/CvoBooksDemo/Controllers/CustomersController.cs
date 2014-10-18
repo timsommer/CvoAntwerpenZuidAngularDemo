@@ -114,6 +114,8 @@ namespace CvoBooksDemo.Controllers
         {
             try
             {
+                _CustomerRepository.Delete(id);
+
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception e)

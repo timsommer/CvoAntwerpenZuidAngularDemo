@@ -2,7 +2,7 @@
     "use strict";
     angular.module("CvoDemo.controllers")
         .controller("HomeController", [
-            "$q", "$log", "$scope", "$modal", "CustomerService", function($q, $log, $scope, $modal, CustomerService) {
+            "$q", "$log", "$scope", "$modal",  "$window", "CustomerService", function($q, $log, $scope, $modal, $window, CustomerService) {
 
                 //Fields
                 $scope.Headers = [
@@ -56,6 +56,17 @@
                     }, function() {
                         $log.info('Modal dismissed at: ' + new Date());
                     });
+                };
+
+                $scope.delete = function (customer) {
+                    if ($window.confirm("Are you sure?")) {
+                        $scope.data.$delete({ id: customer.id }, function () {
+                            $scope.FetchResult();
+                        }), function (response) {
+                            //errorAlert('#alert-area', response.data.message);µ
+                            alert("error !");
+                        };
+                    }
                 };
 
                 $scope.FetchResult();
