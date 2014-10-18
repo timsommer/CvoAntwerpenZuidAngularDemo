@@ -45,30 +45,7 @@
             </div>
 
         </div>
-        <div class="row">
 
-            <div class="col-xs-12 col-md-10">
-                <pagination boundary-links="true" ng-show="data.customers.length > FilterCriteria.PageSize"
-                    max-size="15" rotate="false" total-items="data.customers.length" num-pages="numPages"
-                    previous-text=" &lsaquo;" next-text="&rsaquo;" items-per-page="FilterCriteria.PageSize"
-                    first-text="&laquo;" last-text="&raquo;"
-                    total-items="totalItems" ng-model="FilterCriteria.Page" ng-change="FetchResult()">
-                </pagination>
-            </div>
-
-            <div class="col-xs-12 col-md-2">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="glyphicon glyphicon-list"></i>
-                    </span>
-                    <select ng-model="FilterCriteria.PageSize" class="form-control" ng-change="FetchResult()"
-                        ng-options="t for t in [10, 25, 50, 75, 100]">
-                        <option>--</option>
-                    </select>
-                </div>
-            </div>
-
-        </div>
         <button type="button" class="btn btn-primary" ng-click="create()" >Create customer</button>
     </div>
 </div>
