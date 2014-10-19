@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="CvoDemo">
+<head>
+  <title>AngularJS</title>
+  <link rel="stylesheet" href="lib/style.css" type="text/css" />
+  <link rel="stylesheet" href="lib/bootstrap.min.css" type="text/css" />
+</head>
+<body>
+  <script src="lib/angular.js" type="text/javascript"></script>
+  <script src="lib/angular-route.js" type="text/javascript"></script>
+  <script src="lib/angular-messages.js" type="text/javascript"></script>
+  <script type="text/javascript" src="lib/ui-bootstrap-tpls-0.11.2.js"></script>
+
+  <script type="text/javascript">
+
+  (function(){
+    "use strict";
+    angular.module("CvoDemo", ["ui.bootstrap","ngRoute","ngMessages"])
+
+    .directive('smartButton', ['$location', '$timeout', function ($location, $timeout) {
+        return {
+          restrict: 'A', 
+          link: function postLink(scope, element, attrs) {
+
+            element.bind('click', function(){
+                element.val("Loading..");  
+                $timeout(function() {
+                    element.val("Loading done..");                    
+                }, 3000);
+            });
+          }
+        }
+    }]);
+  }());
+
+  </script>
+
+  <div>
+    <input type="button" smart-button value="click me !" />
+  </div>
+
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="PromiseExample">
+	<head>
+		<title>AngularJS</title>
+        <link rel="stylesheet" href="lib/style.css" type="text/css" />
+	</head>
+	<body>
+		<script src="lib/angular.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+
+		(function(){
+			'use strict';
+
+			angular.module("PromiseExample",[])
+
+			//inject the $scope object to access it within a controller
+			.controller("FatherController", ['$scope', 'SonService', function($scope, SonService) {
+				$scope.fatherAction;
+
+	    		$scope.makePromiseWithSon = function() {
+			        // This service's function returns a promise, but we'll deal with that shortly
+			        SonService.getWeather()
+
+			            // then() called when son gets back
+			            .then(function(data) {
+			                // promise fulfilled
+			               	console.info(data.list[0].weather);
+
+			                if (data.list[0].weather[0].main !=='Rain') {			                    
+			                    $scope.fatherAction = "Prepare fishing trip!";			                    
+			                } else {
+			                    $scope.fatherAction = "Prepare sunday dinner !";
+			                }
+
+			            }, function(error) {
+			                // promise rejected, could log the error with: console.log('error', error);
+			                $scope.fatherAction = "Rejected, prepare sunday dinner !";
+			        	});
+	    		};
+
+			}])
+
+
+
+
+			.factory('SonService', function ($http, $q) {
+			    return {
+			        getWeather: function() {
+			            // the $http API is based on the deferred/promise APIs exposed by the $q service
+			            // so it returns a promise for us by default
+			            return $http.get('http://api.openweathermap.org/data/2.5/forecast/daily?q=Antwerp&units=metric&cnt=7')
+			                .then(function(response) {
+			                 	if (typeof response.data === 'object') {
+			                        return response.data;
+			                    } else {
+			                        // invalid response
+			                        return $q.reject(response.data);
+			                    }
+
+			                }, function(response) {
+			                    // something went wrong
+			                    return $q.reject(response.data);
+			            	});
+			        }
+			    };
+			});
+
+		})();
+		</script>
+
+		<div ng-controller="FatherController">
+			
+		<input type="button" value="Send Son!" ng-click="makePromiseWithSon()"></input>
+		<p>
+			<span>{{fatherAction}}</span>
+		</p>
+		</div>
+	</body>
+</html>

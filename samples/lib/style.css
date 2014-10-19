@@ -1,0 +1,45 @@
+
+body {padding: 10px;}
+input { outline: 0; border-radius: 5px; padding:5px; border:2px solid #ccc; -webkit-border-radius: 5px; }
+input:focus { border-color:#333; }
+input[type=submit] { padding:5px 15px; background:#ccc; border:0 none; cursor:pointer; }
+.error-messages {
+    /*transition: 1s linear all;*/
+    transition-property: background-color;
+    transition-timing-function: ease;
+    transition-duration: 0.5s;
+}
+.error-messages.ng-active {
+  background:maroon;
+  color:white;
+  padding:5px;
+  border-radius:5px;
+  margin-top:5px;
+  position:relative;
+}
+.error-messages.ng-active:after {
+  position:absolute;
+  top:-10px;
+  content:"";
+  left:20px;
+  border-style:solid;
+  border-color:transparent transparent maroon;
+  border-width:5px;
+}
+
+
+
+
+
+
+/* really specific css rules applied by angular */
+.ng-valid 		{  }
+.ng-invalid{
+	border-color: red!important;
+}
+.ng-pristine 	{  }
+.ng-dirty 		{  }
+
+.ng-invalid-required 		{  }
+.ng-invalid-minlength 		{  }
+.ng-valid-max-length 		{  }

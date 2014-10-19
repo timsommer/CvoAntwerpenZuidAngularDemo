@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="CvoDemo">
+<head>
+  <title>AngularJS</title>
+  <link rel="stylesheet" href="lib/style.css" type="text/css" />
+  <link rel="stylesheet" href="lib/bootstrap.min.css" type="text/css" />
+</head>
+<body>
+  <script src="lib/angular.js" type="text/javascript"></script>
+  <script src="lib/angular-route.js" type="text/javascript"></script>
+  <script type="text/javascript" src="lib/ui-bootstrap-tpls-0.11.2.js"></script>
+
+  <script type="text/javascript">
+
+  (function(){
+    "use strict";
+    angular.module("CvoDemo", ["ui.bootstrap","ngRoute"])
+    .config(['$routeProvider', function ($routeProvider) {
+        $routeProvider
+            .when('/home', {
+                templateUrl: 'views/home.html',
+                controller: 'HomeController'
+            })
+            .when('/page/:id?', {
+                template: '<div class="container"> {{pageId}} test</div>',
+                controller: 'NewPageController'
+            })
+            .otherwise({
+                redirectTo: '/home'
+            });
+    }])
+    .controller("HomeController", ["$scope",function($scope){
+        $scope.customers = [
+            { id:1, firstName : "Joris", lastName : "Brauns", emailAdress : "joris.brauns@team4talent.be", phoneNumber : "03444555666", address : 'Sample 123' },
+            { id:2, firstName : "Tim", lastName : "Sommer", emailAdress : "tim.sommer@team4talent.be", phoneNumber : "03444555777", address : 'Sample 456' },
+            { id:3, firstName : "Bart", lastName : "Van Herck", emailAdress : "bart.vanherck@team4talent.be", phoneNumber : "03444555888", address : 'Sample 789' }
+        ];
+        $scope.edit = function(customer) {
+            customer.lastName = customer.lastName + ' edited!'
+        }
+        $scope.delete = function(index) {
+            alert('Remove -> ' + index);
+        }
+
+    }])
+    .controller("NewPageController",["$route", "$scope",function($route, $scope){
+        $scope.pageId = $route.current.params.id;
+    }]);
+
+}());
+  </script>
+
+    <div ng-view></div>
+
+
+</body>
+</html>
