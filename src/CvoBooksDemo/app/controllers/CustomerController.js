@@ -23,14 +23,9 @@
 		        $scope.data.$save(function () {
 		            $modalInstance.close();
 		        }, function (response) {
-		            //errorAlert('#alert-area', response.data.message);µ
 		            alert("error !");
 		        });
 
-		        //CustomerService.save($scope.customerCopy).then(function (data) {
-
-
-		        //    $modalInstance.close();
 		    };
 
 		    $scope.cancel = function () {
