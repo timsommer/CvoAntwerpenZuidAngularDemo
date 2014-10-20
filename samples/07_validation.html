@@ -32,9 +32,9 @@
     }])
     .controller("HomeController", ["$scope","$modal",function($scope,$modal){
         $scope.customers = [
-            { id:1, firstName : "Joris", lastName : "Brauns", emailAdress : "joris.brauns@team4talent.be", phoneNumber : "03444555666", address : 'Sample 123' },
-            { id:2, firstName : "Tim", lastName : "Sommer", emailAdress : "tim.sommer@team4talent.be", phoneNumber : "03444555777", address : 'Sample 456' },
-            { id:3, firstName : "Bart", lastName : "Van Herck", emailAdress : "bart.vanherck@team4talent.be", phoneNumber : "03444555888", address : 'Sample 789' }
+            { id:1, firstName : "Joris", lastName : "Brauns", emailAddress : "joris.brauns@team4talent.be", phoneNumber : "03444555666", address : 'Sample 123' },
+            { id:2, firstName : "Tim", lastName : "Sommer", emailAddress : "tim.sommer@team4talent.be", phoneNumber : "03444555777", address : 'Sample 456' },
+            { id:3, firstName : "Bart", lastName : "Van Herck", emailAddress : "bart.vanherck@team4talent.be", phoneNumber : "03444555888", address : 'Sample 789' }
         ];
         $scope.edit = function(customer) {
            var modalInstance = $modal.open({
