@@ -22,8 +22,9 @@
           restrict: 'A', 
           link: function postLink(scope, element, attrs) {
 
+            element.val("Loading..");  
+            
             element.bind('click', function(){
-                element.val("Loading..");  
                 $timeout(function() {
                     element.val("Loading done..");                    
                 }, 3000);

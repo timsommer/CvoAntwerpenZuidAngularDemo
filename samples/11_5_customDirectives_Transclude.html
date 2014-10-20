@@ -20,28 +20,34 @@
       .directive('smartButton', ['$location', '$timeout', function ($location, $timeout) {
           return {
             restrict: 'E', 
-            require: '^ngModel',
+            require: 'ngModel',
             replace: true,
-            scope: {action: "&"},
-            template: '<input type="button" name="smartbutton" ng-click="action()" ng-class="" value="click me!" />',
+            transclude: true,
+            scope:  {myCustomAction: "&"},
+            template: '<div name="smartbutton"><input type="button" ng-click="myCustomAction()" ng-class="" value="click me!" /> <ng-transclude></ng-transclude></div>',
             link: function postLink(scope, element, attrs, ctrl) {
 
-              ctrl.$setValidity('is-executed', false);
+              ctrl.$setValidity('isExecuted', false);
 
-              element.bind('click', function(){               
-                  element.val("Loading..");  
+
+              var el = angular.element(element.find('input')[0]);
+
+              el.bind('click', function(){   
+
+                  el.val("Loading..");  
 
                   $timeout(function() {
-                      element.val("Loading done..");      
-                      ctrl.$setValidity('is-executed', true);
+                      el.val("Loading done..");      
+                      ctrl.$setValidity('isExecuted', true);
 
                   }, 3000);
+
               });   
             }           
           }
       }])
 
-      .controller("TimController", ["$scope", function($scope){
+      .controller("DemoController", ["$scope", function($scope){
           $scope.demo = function(e){
               alert(e);
           }
@@ -51,9 +57,14 @@
 
   </script>
 
-  <div ng-controller="TimController">
-    <smart-button action="demo('directives are hard!')" ng-model="test"></smart-button>
-  </div>
+
+   <form name="exampleForm" ng-controller="DemoController">
+    <div >
+      <smart-button my-custom-action="demo('directives are hard!')" ng-model="test">T4TRocks</smart-button> 
+
+      <button class="btn btn-success" ng-click="demo('enabled')" ng-disabled="exampleForm.smartbutton.$error.isExecuted">Save</button>
+    </div>
+  </form>
 
 
 </body>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="CvoDemo">
+<head>
+  <title>AngularJS</title>
+  <link rel="stylesheet" href="lib/style.css" type="text/css" />
+  <link rel="stylesheet" href="lib/bootstrap.min.css" type="text/css" />
+</head>
+<body>
+  <script src="lib/angular.js" type="text/javascript"></script>
+  <script src="lib/angular-route.js" type="text/javascript"></script>
+  <script src="lib/angular-messages.js" type="text/javascript"></script>
+  <script type="text/javascript" src="lib/ui-bootstrap-tpls-0.11.2.js"></script>
+
+  <script type="text/javascript">
+
+  (function(){
+    "use strict";
+    angular.module("CvoDemo", ["ui.bootstrap","ngRoute","ngMessages"])
+
+      .directive('smartButton', ['$location', '$timeout', function ($location, $timeout) {
+          return {
+            restrict: 'E', 
+            require: 'ngModel',
+            replace: true,
+            scope: {myCustomAction: "&"},
+            template: '<input type="button" name="smartbutton" ng-click="myCustomAction()" ng-class="" value="click me!" />',
+            link: function postLink(scope, element, attrs, ctrl) {
+
+              ctrl.$setValidity('isExecuted', false);
+
+              element.bind('click', function(){               
+                  element.val("Loading..");  
+
+                  $timeout(function() {
+                      element.val("Loading done..");      
+                      ctrl.$setValidity('isExecuted', true);
+
+                  }, 3000);
+              });   
+            }           
+          }
+      }])
+
+      .controller("DemoController", ["$scope", function($scope){
+          $scope.demo = function(e){
+              alert(e);
+          }
+      }])
+
+    }());
+
+  </script>
+
+  
+  <form name="exampleForm" ng-controller="DemoController">
+    <div >
+      <smart-button my-custom-action="demo('directives are hard!')" ng-model="test"></smart-button> 
+
+      <button class="btn btn-success" ng-click="demo('enabled')" ng-disabled="exampleForm.smartbutton.$error.isExecuted">Save</button>
+    </div>
+  </form>
+
+</body>
+</html>

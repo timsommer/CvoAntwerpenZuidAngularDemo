@@ -20,19 +20,19 @@
       .directive('smartButton', ['$location', '$timeout', function ($location, $timeout) {
           return {
             restrict: 'E', 
-            require: '^ngModel',
+            require: 'ngModel',
             replace: true,
             template: '<input type="button" name="smartbutton" ng-class="" value="click me!" />',
             link: function postLink(scope, element, attrs, ctrl) {
 
-              ctrl.$setValidity('is-executed', false);
+              ctrl.$setValidity('isExecuted', false);
 
               element.bind('click', function(){               
                   element.val("Loading..");  
 
                   $timeout(function() {
                       element.val("Loading done..");      
-                      ctrl.$setValidity('is-executed', true);
+                      ctrl.$setValidity('isExecuted', true);
 
                   }, 3000);
               });           
@@ -41,18 +41,25 @@
           }
       }])
 
-      .controller("TimController", [function(){
 
+      .controller("DemoController", ["$scope", function($scope){
+          $scope.demo = function(e){
+              alert(e);
+          }
       }])
 
     }());
 
   </script>
+  
+  <form name="exampleForm" ng-controller="DemoController">
+    <div >
+      <smart-button ng-model="test"></smart-button>
 
-  <div ng-controller="TimController">
-    <smart-button ng-model="test"></smart-button>
-  </div>
 
+      <button class="btn btn-success" ng-click="demo('enabled')" ng-disabled="exampleForm.smartbutton.$error.isExecuted">Save</button>
+    </div>
+  </form>
 
 </body>
 </html>

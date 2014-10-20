@@ -42,6 +42,9 @@
     </form>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-success" ng-click="ok(customerForm.$valid)" ng-disabled="customerForm.$pristine || customerForm.$invalid">Save</button>
+
+    <smart-button ng-model="test"></smart-button>
+
+    <button class="btn btn-success" ng-click="ok(customerForm.$valid)" ng-disabled="customerForm.$pristine || customerForm.$invalid || smartbutton.$isExecuted">Save</button>
     <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
 </div>
