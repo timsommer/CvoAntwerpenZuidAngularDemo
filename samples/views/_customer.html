@@ -26,7 +26,7 @@
 
         <div class="form-group" >
             <label>Email</label>
-            <input type="email" ng-model="customer.emailAdress" class="form-control" name="email" placeholder="Enter e-mail" ng-maxlength="30" required>
+            <input type="email" ng-model="customer.emailAddress" class="form-control" name="email" placeholder="Enter e-mail" ng-maxlength="30" required>
             <div class="error-messages" ng-messages="!customerForm.email.$pristine && customerForm.email.$error" ng-messages-include="views/error-messages.html">
                 <div ng-message="required">You did not enter an email address</div>
             </div>
