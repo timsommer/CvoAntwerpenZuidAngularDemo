@@ -22,8 +22,9 @@
             restrict: 'E', 
             require: 'ngModel',
             replace: true,
-            template: '<input type="button" name="smartbutton" ng-class="" value="click me!" />',
-            link: function postLink(scope, element, attrs, ctrl) {
+            scope: {myCustomAction: "&"},
+            template: '<input type="button" name="smartbutton" ng-click="myCustomAction()" ng-class="" value="click me!" />',
+            link: function (scope, element, attrs, ctrl) {
 
               ctrl.$setValidity('isExecuted', false);
 
@@ -35,12 +36,15 @@
                       ctrl.$setValidity('isExecuted', true);
 
                   }, 3000);
-              });           
-
+              });   
+            },
+            controller: function($scope){
+              $scope.myCustomAction = function(){
+                alert("hi");
+              };
             }
           }
       }])
-
 
       .controller("DemoController", ["$scope", function($scope){
           $scope.demo = function(e){
@@ -51,11 +55,11 @@
     }());
 
   </script>
+
   
   <form name="exampleForm" ng-controller="DemoController">
     <div >
-      <smart-button ng-model="test"></smart-button>
-
+      <smart-button my-custom-action="demo('directives are hard!')" ng-model="test"></smart-button> 
 
       <button class="btn btn-success" ng-click="demo('enabled')" ng-disabled="exampleForm.smartbutton.$error.isExecuted">Save</button>
     </div>

@@ -35,16 +35,30 @@
     }])
 
 
-    .factory('CustomerService', ['$resource', function ($resource) {
-            return $resource('http://localhost:50872/api/customers/');
+    .factory('CustomerService', ['$http', '$q', function ($http, $q) {
+        return{
+            getCustomers: function(){
+                return $http.get('http://localhost:50872/api/customers/')
+                            .then(function(response){
+                                return response.data;
+                            }, function(response) {
+                                // something went wrong
+                                return $q.reject(response.data);
+                            });
+            }
+        }
     }])
 
 
 
     .controller("HomeController", ["$scope", "$modal", "CustomerService", function($scope, $modal, CustomerService){
-        CustomerService.get( function (message) {
-            $scope.customers = message.customers;
-        });
+        
+        CustomerService.getCustomers()
+                       .then(function(data){
+                            $scope.customers = data.customers;
+                       }, function(error){
+                            console.error(error);
+                       });
 
         $scope.edit = function(customer) {
            var modalInstance = $modal.open({

@@ -17,9 +17,22 @@
     "use strict";
     angular.module("CvoDemo", ["ui.bootstrap","ngRoute","ngMessages"])
 
-    .directive('smartButton', [function () {
-        return { 
-          template: '<input type="button" value="click me !" />'
+    .directive('smartButton', ['$location', '$timeout', function ($location, $timeout) {
+        return {
+          restrict: 'E', 
+          scope: {},
+          replace: true,
+          template: '<input type="button" ng-class="" value="Click me!" />',
+          link: function (scope, element, attrs) {
+
+            element.bind('click', function(){
+                element.val("Loading..");  
+                $timeout(function() {
+                    element.val("Loading done..");                    
+                }, 3000);
+            });           
+
+          }
         }
     }]);
   }());
