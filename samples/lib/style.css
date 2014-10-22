@@ -1,5 +1,7 @@
-
-body {padding: 10px;}
+* { box-sizing: border-box; }
+body {
+  padding-top: 50px;
+}
 input { outline: 0; border-radius: 5px; padding:5px; border:2px solid #ccc; -webkit-border-radius: 5px; }
 input:focus { border-color:#333; }
 input[type=submit] { padding:5px 15px; background:#ccc; border:0 none; cursor:pointer; }

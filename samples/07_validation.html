@@ -23,7 +23,7 @@
                 controller: 'HomeController'
             })
             .when('/page/:id?', {
-                template: '<div class="container"> {{pageId}} test</div>',
+                template: '<div class="container"><h1>Team{{pageId}}Talent</h1><p>Lorem ipsum</p></div>',
                 controller: 'NewPageController'
             })
             .otherwise({
@@ -72,6 +72,16 @@
         }]);
 }());
   </script>
+
+  
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li data-detect-active-tab><a href="#home">Home</a></li>
+                <li data-detect-active-tab><a href="#page/4">Team4Talent</a></li>
+            </ul>
+        </div>
+    </div>
 
     <div ng-view></div>
 
