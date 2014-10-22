@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using CvoBooksDemo.Domain;
 using CvoBooksDemo.Domain.Repositories;
@@ -50,6 +51,7 @@ namespace CvoBooksDemo.Repository.Repository
             else
             {
                 _cvoCustomerContext.Customers.Attach(customer);
+                _cvoCustomerContext.Entry(customer).State = EntityState.Modified; ;
                 _cvoCustomerContext.SaveChanges();
             }
         }

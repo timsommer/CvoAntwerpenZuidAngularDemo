@@ -25,9 +25,9 @@
 			            // then() called when son gets back
 			            .then(function(data) {
 			                // promise fulfilled
-			               	console.info(data.list[0].weather);
+			               	console.info(data.list[1].weather);
 
-			                if (data.list[0].weather[0].main !=='Rain') {			                    
+			                if (data.list[1].weather[0].main !=='Rain') {			                    
 			                    $scope.fatherAction = "Prepare fishing trip!";			                    
 			                } else {
 			                    $scope.fatherAction = "Prepare sunday dinner !";
