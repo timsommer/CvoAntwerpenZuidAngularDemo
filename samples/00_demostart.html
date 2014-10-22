@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="CvoDemo">
+<html>
 <head>
   <title>AngularJS</title>
   <link rel="stylesheet" href="lib/style.css" type="text/css" />
@@ -15,81 +15,9 @@
 
   (function(){
     "use strict";
-    angular.module("CvoDemo", ["ui.bootstrap","ngRoute","ngMessages"])
-    .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider
-            .when('/home', {
-                templateUrl: 'views/home.html',
-                controller: 'HomeController'
-            })
-            .when('/page/:id?', {
-                template: '<div class="container"> {{pageId}} test</div>',
-                controller: 'NewPageController'
-            })
-            .otherwise({
-                redirectTo: '/home'
-            });
-    }])
-
-    .factory('CustomerFactory', [ function () {
-
-        var _customers = [{ id:1, firstName : "Joris", lastName : "Brauns", emailAddress : "joris.brauns@team4talent.be"				, phoneNumber : "03444555666", address : 'Sample 123' },
-                          { id:2, firstName : "Tim", lastName : "Sommer", emailAddress : "tim.sommer@team4talent.be", phoneNumber : "03444555777", address : 'Sample 456' },
-                          { id:3, firstName : "Bart", lastName : "Van Herck", emailAddress : "bart.vanherck@team4talent.be", phoneNumber : "03444555888", address : 'Sample 789' }];   
-
-        var _factory = {
-                getCustomers : function(){
-                    return _customers;
-                }
-            };
-
-        return _factory;
-    }])
-
-
-
-    .controller("HomeController", ["$scope","$modal", "CustomerFactory",function($scope,$modal, CustomerFactory){
-        $scope.customers =  CustomerFactory.getCustomers();
-
-        $scope.edit = function(customer) {
-           var modalInstance = $modal.open({
-                templateUrl: 'views/_customer.html',
-                controller: 'CustomerController',
-                resolve: {
-                    customerCopy: function() {
-                        return angular.copy(customer);
-                    }
-                }
-            });
-            modalInstance.result.then(function(item) {
-                customer = angular.copy(item, customer); 
-            }, function() { /* Error logging */});
-        }
-        $scope.delete = function(index) {
-            alert('Remove -> ' + index);
-        }
-
-    }])
-    .controller("NewPageController",["$route", "$scope",function($route, $scope){
-        $scope.pageId = $route.current.params.id;
-    }])
-    .controller("CustomerController", ["$scope", "$modalInstance", "customerCopy", function ($scope, $modalInstance, customerCopy) {
-
-            $scope.customer = customerCopy;
-            
-            $scope.ok = function() {
-                $modalInstance.close($scope.customer);
-            };
-
-            $scope.cancel = function () {
-                $modalInstance.dismiss('cancel');
-            };
-        }]);
-}());
+   
+  }());
   </script>
-
-    <div ng-view></div>
-
 
 </body>
 </html>
