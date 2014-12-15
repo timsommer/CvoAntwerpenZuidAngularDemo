@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 using CvoBooksDemo.Domain;
 using CvoBooksDemo.Domain.Repositories;
@@ -38,6 +39,8 @@ namespace CvoBooksDemo.Controllers
         {
             try
             {
+                Thread.Sleep(1500);
+
                 var customers = _CustomerRepository.Get().ToList();
 
                 return Request.CreateResponse(HttpStatusCode.OK, new GetCustomerRequestMessage { Customers = customers });
